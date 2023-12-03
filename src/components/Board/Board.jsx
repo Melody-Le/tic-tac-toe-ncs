@@ -1,5 +1,7 @@
 import React from "react";
 import Square from "../Square/Square";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { fontSize } from "../../theme/commonStyles";
 import {
   BoardWrapper,
   SquareWrapper,
@@ -15,7 +17,9 @@ function Board() {
       <BoardWrapper>
         <StatusBar>
           <PlayerTurn>X Turn</PlayerTurn>
-          <BackButton>Return</BackButton>
+          <BackButton>
+            <RiArrowGoBackLine size={`${fontSize.md}rem`} />
+          </BackButton>
         </StatusBar>
         <SquareWrapper>
           <Square value={"X"} />

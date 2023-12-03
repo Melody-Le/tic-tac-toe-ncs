@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -12,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     place-content: center;
     min-height: 100vh;
+    
   }
   * {
     margin: 0;
@@ -20,12 +22,13 @@ const GlobalStyle = createGlobalStyle`
   }
   button {
     all: unset;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px ${theme.darkDeepBlue};
   }
 
-  ${
-    "" /* button:focus {
+  button:focus {
     outline: revert;
-  } */
   }
+
 `;
 export default GlobalStyle;
