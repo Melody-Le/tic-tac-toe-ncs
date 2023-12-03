@@ -17,7 +17,15 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    margin: 0 auto;
+  }
+  button {
+    all: unset;
+  }
+
+  ${
+    "" /* button:focus {
+    outline: revert;
+  } */
   }
 `;
 export default GlobalStyle;
