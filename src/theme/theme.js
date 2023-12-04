@@ -1,9 +1,10 @@
 export const theme = {
-  darkBlue: "#2C465C",
-  darkDeepBlue: "#091c2c",
+  darkBlue: "#0f1b21",
   primary: "#7ABEBB",
   secondPrimary: "hsl(0, 100%, 74%)",
-  bright: "#ffffff",
-  secondHightlight: "#13e7e7",
+  secondDarkBlue: "#1f3540",
+  secondHightlight: "#436f85",
   highlight: "#fcf261",
+  bright: "#ffffff",
+  secondBright: "#26ffcb",
 };

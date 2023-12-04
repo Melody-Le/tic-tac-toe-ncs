@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 100%;
     box-sizing: border-box;
+    color: ${theme.secondBright}
   }
   body{
     font-family:-apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -13,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     place-content: center;
     min-height: 100vh;
+    background-color:${theme.darkBlue}
     
   }
   * {
@@ -23,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
   button {
     all: unset;
     cursor: pointer;
-    box-shadow: 5px 5px 5px ${theme.darkDeepBlue};
   }
 
   button:focus {

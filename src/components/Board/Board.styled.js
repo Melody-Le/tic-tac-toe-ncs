@@ -4,20 +4,15 @@ import {
   squareWrapperSize,
   gap,
   padding,
-  boardSize,
   borderRadius,
   fontSize,
 } from "../../theme/commonStyles";
 import { theme } from "../../theme/theme";
 
 export const BoardWrapper = styled.div`
-  width: ${boardSize}rem;
-  background-color: ${theme.darkBlue};
   display: flex;
   flex-direction: column;
   gap: ${gap.lg}rem;
-  padding: ${padding.lg}rem;
-  border-radius: ${borderRadius}rem;
 `;
 
 export const StatusBar = styled.div`
@@ -28,16 +23,15 @@ export const StatusBar = styled.div`
 `;
 
 export const PlayerTurn = styled.div`
-  background-color: ${theme.bright};
+  background-color: ${theme.secondDarkBlue};
   padding: ${padding.md}rem;
   border-radius: ${borderRadius}rem;
   font-size: ${fontSize.sm}rem;
   font-weight: 700;
-  box-shadow: 5px 5px 5px ${theme.darkDeepBlue};
 `;
 
 export const BackButton = styled.button`
-  background-color: ${theme.bright};
+  background-color: ${theme.secondDarkBlue};
   padding: ${padding.sm}rem;
   border-radius: 2rem;
   transition: background-color 0.2s ease-in-out;
@@ -55,7 +49,7 @@ export const SquareWrapper = styled.div`
   height: ${squareWrapperSize}rem;
 `;
 export const RestartButton = styled.button`
-  background-color: ${theme.bright};
+  background-color: ${theme.secondDarkBlue};
   padding: 1rem 0rem;
   text-align: center;
   border-radius: ${borderRadius}rem;

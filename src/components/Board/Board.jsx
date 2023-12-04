@@ -17,6 +17,7 @@ import {
   LOCAL_STORAGE_KEY,
 } from "../../store/constant.js";
 import { defineWinner } from "../../store/action";
+import GameOver from "../GameOver/GameOver";
 
 function Board() {
   const [squares, setSquares] = useState(() => {
@@ -27,6 +28,7 @@ function Board() {
   });
   const [player, setPlayer] = useState(PLAYER_X);
   const [gameState, setGameState] = useState(GameState.inProgress);
+  const [winningLine, setwinningLine] = useState([]);
 
   const handleSquareClick = (index) => {
     const nextSquare = [...squares];
@@ -40,14 +42,23 @@ function Board() {
     );
     player === PLAYER_X ? setPlayer(PLAYER_O) : setPlayer(PLAYER_X);
   };
+  const handleReset = () => {
+    localStorage.clear();
+    setSquares(Array(9).fill(null));
+    setGameState(GameState.inProgress);
+    setPlayer(PLAYER_X);
+    setwinningLine([]);
+  };
 
   useEffect(() => {
-    const winner = defineWinner(squares);
+    const winner = defineWinner(squares)?.winner;
     switch (winner) {
       case "X":
         setGameState(GameState.playerOWins);
+        setwinningLine(defineWinner(squares)?.winnningPositons);
         break;
       case "O":
+        setwinningLine(defineWinner(squares)?.winnningPositons);
         setGameState(GameState.playerOWins);
         break;
       case "draw":
@@ -70,60 +81,92 @@ function Board() {
     <>
       <BoardWrapper>
         <StatusBar>
-          <PlayerTurn>X Turn</PlayerTurn>
-          <div>{gameState}</div>
-          <BackButton>
-            <RiArrowGoBackLine size={`${fontSize.md}rem`} />
-          </BackButton>
+          {gameState === GameState.inProgress ? (
+            <>
+              <PlayerTurn>{player} TURN</PlayerTurn>
+              <BackButton>
+                <RiArrowGoBackLine size={`${fontSize.md}rem`} />
+              </BackButton>
+            </>
+          ) : (
+            <GameOver gameState={gameState} />
+          )}
         </StatusBar>
         <SquareWrapper>
           <Square
+            squareIndex={0}
             value={squares[0]}
             onSquareClick={() => handleSquareClick(0)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={1}
             value={squares[1]}
             onSquareClick={() => handleSquareClick(1)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={2}
             value={squares[2]}
             onSquareClick={() => handleSquareClick(2)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={3}
             value={squares[3]}
             onSquareClick={() => handleSquareClick(3)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={4}
             value={squares[4]}
             onSquareClick={() => handleSquareClick(4)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={5}
             value={squares[5]}
             onSquareClick={() => handleSquareClick(5)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={6}
             value={squares[6]}
             onSquareClick={() => handleSquareClick(6)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={7}
             value={squares[7]}
             onSquareClick={() => handleSquareClick(7)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
           <Square
+            squareIndex={8}
             value={squares[8]}
             onSquareClick={() => handleSquareClick(8)}
             player={player}
+            winningLine={winningLine}
+            gameState={gameState}
           />
         </SquareWrapper>
-        <RestartButton>Restart Game</RestartButton>
+        <RestartButton onClick={handleReset}>Restart Game</RestartButton>
       </BoardWrapper>
     </>
   );

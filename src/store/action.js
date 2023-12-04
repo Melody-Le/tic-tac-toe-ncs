@@ -12,12 +12,12 @@ export const defineWinner = (squares) => {
   for (let i = 0, l = winningCase.length; i < l; i++) {
     const [a, b, c] = winningCase[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { winner: squares[a], winnningPositons: [a, b, c] };
     }
   }
   const areAllTilesFilledIn = squares.every((cell) => cell !== null);
   if (areAllTilesFilledIn) {
-    return "draw";
+    return { winner: "draw", winnningPositons: [] };
   } else {
     return null;
   }
