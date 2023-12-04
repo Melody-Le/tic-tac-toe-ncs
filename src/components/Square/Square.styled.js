@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
 import { borderRadius, fontSize } from "../../theme/commonStyles";
+import { PLAYER_O, PLAYER_X } from "../../store/constant.js";
 
 export const Cell = styled.div`
   display: grid;
@@ -22,7 +23,8 @@ export const Cell = styled.div`
     background-color: ${(props) => !props.value && theme.secondHightlight};
   }
   &:hover::after {
-    content: "${(props) => (props.value ? "" : props.xIsNext ? "X" : "O")}";
+    content: "${(props) =>
+      props.value ? "" : props.player === PLAYER_X ? "X" : "O"}";
     color: ${theme.bright};
   }
 `;

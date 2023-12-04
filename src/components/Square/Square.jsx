@@ -1,9 +1,9 @@
 import React from "react";
 import { Cell } from "./Square.styled";
 
-function Square({ value, onSquareClick, xIsNext }) {
+function Square({ value, onSquareClick, player }) {
   return (
-    <Cell onClick={onSquareClick} value={value} xIsNext={xIsNext}>
+    <Cell onClick={onSquareClick} value={value} player={player}>
       {value}
     </Cell>
   );
