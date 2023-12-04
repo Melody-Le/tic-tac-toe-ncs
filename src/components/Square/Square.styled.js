@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
-import { markSize, borderRadius, fontSize } from "../../theme/commonStyles";
+import { borderRadius, fontSize } from "../../theme/commonStyles";
 
 export const Cell = styled.div`
   display: grid;
@@ -10,9 +10,19 @@ export const Cell = styled.div`
   font-weight: 900;
   width: 100%;
   font-family: "Varela Round", sans-serif;
-  color: ${theme.primary};
+  color: ${({ value }) =>
+    value === "X" ? theme.primary : theme.secondPrimary};
   background-color: ${theme.bright};
   border-radius: ${borderRadius}rem;
   cursor: pointer;
   box-shadow: 5px 5px 5px ${theme.darkDeepBlue};
+  caret-color: transparent;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background-color: ${(props) => !props.value && theme.secondHightlight};
+  }
+  &:hover::after {
+    content: "${(props) => (props.value ? "" : props.xIsNext ? "X" : "O")}";
+    color: ${theme.bright};
+  }
 `;

@@ -4,5 +4,6 @@ export const theme = {
   primary: "#7ABEBB",
   secondPrimary: "hsl(0, 100%, 74%)",
   bright: "#ffffff",
+  secondHightlight: "#13e7e7",
   highlight: "#fcf261",
 };

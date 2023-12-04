@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 import {
-  boardSize,
+  squareWrapperSize,
   gap,
   padding,
-  gameBoxSize,
+  boardSize,
   borderRadius,
   fontSize,
 } from "../../theme/commonStyles";
 import { theme } from "../../theme/theme";
 
 export const BoardWrapper = styled.div`
-  width: ${gameBoxSize}rem;
+  width: ${boardSize}rem;
   background-color: ${theme.darkBlue};
   display: flex;
   flex-direction: column;
@@ -22,6 +22,7 @@ export const BoardWrapper = styled.div`
 
 export const StatusBar = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: start;
 `;
@@ -50,8 +51,8 @@ export const SquareWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: ${gap.md}rem;
-  width: ${boardSize}rem;
-  height: ${boardSize}rem;
+  width: ${squareWrapperSize}rem;
+  height: ${squareWrapperSize}rem;
 `;
 export const RestartButton = styled.button`
   background-color: ${theme.bright};
