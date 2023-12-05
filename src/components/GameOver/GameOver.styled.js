@@ -8,7 +8,7 @@ export const GameOverContainer = styled.div`
   border-radius: ${borderRadius}rem;
   font-size: ${fontSize.md}rem;
   font-weight: 700;
-  width: 100%;
   text-align: center;
   caret-color: transparent;
+  grid-column: 1 / span 12;
 `;

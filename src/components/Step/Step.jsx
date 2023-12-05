@@ -1,31 +1,23 @@
-import React, { useState } from "react";
-import { StepLi, StepButton } from "./Step.styled";
-import {
-  GameState,
-  PLAYER_O,
-  PLAYER_X,
-  LOCAL_STORAGE_KEY,
-} from "../../store/constant.js";
+import React from "react";
+import { StepItem, StepItemInactive } from "./Step.styled";
 
 function Step({ stepDisplay, onClick, currentStep, active }) {
-  let description;
-  if (stepDisplay > 0) {
-    description = `BACK to step # ${stepDisplay}`;
-  } else {
-    description = "Step 0: Go to Game Start";
-  }
+  console.log(stepDisplay);
+  const description = `BACK TO STEP # ${stepDisplay}`;
   return (
     <>
       {currentStep + 1 !== stepDisplay && (
-        <StepLi>
+        <>
           {active ? (
-            <button onClick={onClick}>{description}</button>
+            <StepItem>
+              <button onClick={onClick}>{description}</button>
+            </StepItem>
           ) : (
-            <button onClick={onClick} style={{ color: "black" }} disabled>
-              {description}
-            </button>
+            <StepItemInactive>
+              <button onClick={onClick}>{description}</button>
+            </StepItemInactive>
           )}
-        </StepLi>
+        </>
       )}
     </>
   );

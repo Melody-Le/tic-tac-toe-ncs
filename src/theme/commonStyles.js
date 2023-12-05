@@ -4,7 +4,6 @@ export const BREAKPONITS = {
   large: `@media (min-width: 992px)`,
 };
 export const squareWrapperSize = 20;
-// export const boardSize = squareWrapperSize + 4;
 export const gap = { sm: 0.25, md: 0.5, lg: 1, xl: 2 };
 export const padding = { sm: 0.5, md: 1, lg: 2, xl: 3 };
 export const borderRadius = 0.5;

@@ -7,7 +7,7 @@ import {
 } from "../../store/constant.js";
 import { defineWinner } from "../../store/action";
 import { GameWrapper, RestartButton } from "./Game.styled";
-import StatusBar from "../StatusBar/StatusBar";
+import GameHeader from "../GameHeader/GameHeader";
 import Board from "../Board/Board";
 import GameFooter from "../GameFooter/GameFooter.jsx";
 import Step from "../Step/Step.jsx";
@@ -45,7 +45,7 @@ function Game() {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, nextHistory);
   };
 
-  const handleReset = () => {
+  const handleRestart = () => {
     localStorage.clear();
     setHistory([{ step: 0, squares: Array(9).fill(null) }]);
     setGameState(GameState.inProgress);
@@ -61,26 +61,6 @@ function Game() {
     setHistory(nextHistory);
     window.localStorage.setItem(LOCAL_STORAGE_KEY, nextHistory);
   };
-
-  let activeStep = [];
-  if (player === PLAYER_X) {
-    activeStep = [1, 3, 5, 7, 9];
-  } else {
-    activeStep = [2, 4, 6, 8];
-  }
-
-  const stepHistory = history?.map((squares, index) => {
-    return (
-      <Step
-        key={index}
-        onClick={() => jumpTo(index)}
-        stepDisplay={index + 1}
-        currentStep={currentStep}
-        player={player}
-        active={activeStep?.includes(index + 1)}
-      />
-    );
-  });
 
   const handleBackAStep = () => {
     console.log(currentStep + "back to :", currentStep - 2);
@@ -112,11 +92,12 @@ function Game() {
 
   return (
     <GameWrapper>
-      <StatusBar
+      <GameHeader
         gameState={gameState}
         player={player}
         currentStep={currentStep}
         backAStep={handleBackAStep}
+        restart={handleRestart}
       />
       <Board
         player={player}
@@ -125,8 +106,14 @@ function Game() {
         gameState={gameState}
         winningLine={winningLine}
       />
-      <GameFooter onClick={handleReset} />
-      <div>{stepHistory}</div>
+      <GameFooter
+        onClick={handleRestart}
+        gameState={gameState}
+        history={history}
+        player={player}
+        currentStep={currentStep}
+        jumpTo={jumpTo}
+      />
     </GameWrapper>
   );
 }

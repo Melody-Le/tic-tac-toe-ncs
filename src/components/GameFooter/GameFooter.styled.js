@@ -1,17 +1,29 @@
 import styled from "styled-components";
 
-import { borderRadius, fontSize } from "../../theme/commonStyles";
+import { padding, borderRadius, gap } from "../../theme/commonStyles";
+
 import { theme } from "../../theme/theme";
 
-export const RestartButton = styled.button`
+export const FooterWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: ${gap.md}rem;
+`;
+
+export const BackButton = styled.button`
+  grid-column: span 4;
+  display: grid;
+  place-content: center;
   background-color: ${theme.secondDarkBlue};
-  padding: 1rem 0rem;
-  text-align: center;
+  padding: ${padding.sm}rem;
   border-radius: ${borderRadius}rem;
-  font-size: ${fontSize.sm}rem;
-  font-weight: 700;
   transition: background-color 0.2s ease-in-out;
-  &:hover {
-    background-color: ${theme.highlight};
-  }
+`;
+export const ShowHistoryButton = styled.button`
+  grid-column: span 8/-1;
+  background-color: ${theme.secondDarkBlue};
+  padding: ${padding.sm}rem;
+  border-radius: ${borderRadius}rem;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
 `;

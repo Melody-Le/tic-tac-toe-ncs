@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
-
-import { borderRadius, fontSize } from "../../theme/commonStyles";
-export const StepLi = styled.li`
+import { padding, borderRadius, fontSize, gap } from "../../theme/commonStyles";
+export const StepItem = styled.div`
+  cursor: pointer;
   &:hover {
     background-color: yellow;
+    color: ${theme.darkBlue};
   }
 `;
-export const StepButton = styled.button`
-  background-color: white;
-  border: red solid 2px;
-  &:hover {
-    background-color: red;
-  }
+export const StepItemInactive = styled.div`
+  color: ${theme.darkBlue};
+  pointer-events: none;
 `;
