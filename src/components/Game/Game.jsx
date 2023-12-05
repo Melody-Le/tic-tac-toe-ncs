@@ -131,6 +131,7 @@ function Game() {
       />
       <GameFooter
         onClick={handleRestart}
+        backAStep={handleBackAStep}
         gameState={gameState}
         history={history}
         player={player}

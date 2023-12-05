@@ -24,12 +24,12 @@ export const Cell = styled.div`
   cursor: pointer;
   caret-color: transparent;
   transition: all 0.5s ease-in-out;
-  ${({ value, player }) => `
+  ${({ value, $player }) => `
       &:hover {
         background-color: ${!value && theme.secondHightlight}
       }
       &:hover::after {
-        content: "${value ? "" : player === PLAYER_X ? "X" : "O"}";
+        content: "${value ? "" : $player === PLAYER_X ? "X" : "O"}";
         color: ${theme.secondDarkBlue}
       }
     `}

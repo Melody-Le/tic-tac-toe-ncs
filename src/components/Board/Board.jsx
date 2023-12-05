@@ -17,93 +17,31 @@ function Board({
     onPlay(nextSquare, index);
   };
 
-  return (
-    <>
-      <SquareWrapper>
-        <Square
-          squareIndex={0}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[0]}
-          onSquareClick={() => handleSquareClick(0)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={1}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[1]}
-          onSquareClick={() => handleSquareClick(1)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={2}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[2]}
-          onSquareClick={() => handleSquareClick(2)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={3}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[3]}
-          onSquareClick={() => handleSquareClick(3)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={4}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[4]}
-          onSquareClick={() => handleSquareClick(4)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={5}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[5]}
-          onSquareClick={() => handleSquareClick(5)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={6}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[6]}
-          onSquareClick={() => handleSquareClick(6)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={7}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[7]}
-          onSquareClick={() => handleSquareClick(7)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-        <Square
-          squareIndex={8}
-          squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-          value={squares[8]}
-          onSquareClick={() => handleSquareClick(8)}
-          player={player}
-          winningLine={winningLine}
-          gameState={gameState}
-        />
-      </SquareWrapper>
-    </>
-  );
+  const createInitialBoard = () => {
+    return Array(3)
+      .fill(null)
+      .map((_, rowIndex) =>
+        Array(3)
+          .fill(null)
+          .map((_, colIndex) => {
+            const squareIndex = rowIndex * 3 + colIndex;
+            return (
+              <Square
+                key={squareIndex}
+                squareIndex={squareIndex}
+                squareIndexOnHistoryHover={squareIndexOnHistoryHover}
+                value={squares[squareIndex]}
+                onSquareClick={() => handleSquareClick(squareIndex)}
+                player={player}
+                winningLine={winningLine}
+                gameState={gameState}
+              />
+            );
+          })
+      );
+  };
+  const initialBoard = createInitialBoard();
+  return <SquareWrapper>{initialBoard}</SquareWrapper>;
 }
 
 export default Board;

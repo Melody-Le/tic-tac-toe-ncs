@@ -23,6 +23,7 @@ function GameFooter({
   const newRef = useRef(null);
   const handleShowHistory = () => {
     setShowHistory((prev) => !prev);
+    console.log(showHistory);
   };
 
   const handleOutsideClick = (event) => {

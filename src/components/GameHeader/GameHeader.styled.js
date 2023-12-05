@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { padding, borderRadius, fontSize } from "../../theme/commonStyles";
-import { squareWrapperSize } from "../../theme/commonStyles";
 import { theme } from "../../theme/theme";
 
 export const GameHeaderContainer = styled.div`

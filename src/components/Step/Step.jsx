@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { StepItem, StepItemInactive } from "./Step.styled";
 
 function Step({
