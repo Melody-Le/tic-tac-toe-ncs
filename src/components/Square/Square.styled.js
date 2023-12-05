@@ -13,8 +13,12 @@ export const Cell = styled.div`
   font-family: "Varela Round", sans-serif;
   color: ${({ value }) =>
     value === "X" ? theme.primary : theme.secondPrimary};
-  background-color: ${({ $cellWin }) => {
-    return $cellWin ? theme.highlight : theme.secondDarkBlue;
+  background-color: ${({ $cellWin, $onHistoryHover }) => {
+    return $cellWin
+      ? theme.highlight
+      : $onHistoryHover
+      ? theme.secondHightlight
+      : theme.secondDarkBlue;
   }};
   border-radius: ${borderRadius}rem;
   cursor: pointer;

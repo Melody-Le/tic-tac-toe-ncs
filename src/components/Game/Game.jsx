@@ -6,18 +6,25 @@ import {
   LOCAL_STORAGE_KEY,
 } from "../../store/constant.js";
 import { defineWinner } from "../../store/action";
-import { GameWrapper, RestartButton } from "./Game.styled";
+import { GameWrapper } from "./Game.styled";
 import GameHeader from "../GameHeader/GameHeader";
 import Board from "../Board/Board";
 import GameFooter from "../GameFooter/GameFooter.jsx";
-import Step from "../Step/Step.jsx";
 
 function Game() {
   const [history, setHistory] = useState(() => {
     const histoyLCS = JSON.parse(
       window.localStorage.getItem(LOCAL_STORAGE_KEY)
     );
-    return histoyLCS || [{ step: 0, squares: Array(9).fill(null) }];
+    return (
+      histoyLCS || [
+        {
+          step: 0,
+          squares: Array(9).fill(null),
+          squareIndex: null,
+        },
+      ]
+    );
   });
   const [currentStep, setCurrentStep] = useState(() => {
     const histoyLCS = JSON.parse(
@@ -29,15 +36,22 @@ function Game() {
       return 0;
     }
   });
+
   const [gameState, setGameState] = useState(GameState.inProgress);
   const [winningLine, setwinningLine] = useState([]);
   const [player, setPlayer] = useState(PLAYER_X);
   const currentSquares = history[currentStep]?.squares;
+  const [squareIndexOnHistoryHover, setSquareIndexOnHistoryHover] =
+    useState(null);
 
-  const handlePlay = (nextSquares) => {
+  const handlePlay = (nextSquares, clickedSquareIndex) => {
     const nextHistory = [
       ...history.slice(0, currentStep + 1),
-      { step: currentStep + 1, squares: nextSquares },
+      {
+        step: currentStep + 1,
+        squares: nextSquares,
+        squareIndex: clickedSquareIndex,
+      },
     ];
     setHistory(nextHistory);
     setCurrentStep(nextHistory.length - 1);
@@ -47,11 +61,20 @@ function Game() {
 
   const handleRestart = () => {
     localStorage.clear();
-    setHistory([{ step: 0, squares: Array(9).fill(null) }]);
+    setHistory([
+      {
+        step: 0,
+        squares: Array(9).fill(null),
+        squareIndex: null,
+      },
+    ]);
     setGameState(GameState.inProgress);
     setPlayer(PLAYER_X);
     setwinningLine([]);
     setCurrentStep(0);
+  };
+  const handleHistoryMouseOver = (index) => {
+    setSquareIndexOnHistoryHover(index);
   };
 
   const jumpTo = (nextStep) => {
@@ -63,7 +86,6 @@ function Game() {
   };
 
   const handleBackAStep = () => {
-    console.log(currentStep + "back to :", currentStep - 2);
     jumpTo(currentStep - 2);
   };
 
@@ -105,6 +127,7 @@ function Game() {
         onPlay={handlePlay}
         gameState={gameState}
         winningLine={winningLine}
+        squareIndexOnHistoryHover={squareIndexOnHistoryHover}
       />
       <GameFooter
         onClick={handleRestart}
@@ -113,6 +136,7 @@ function Game() {
         player={player}
         currentStep={currentStep}
         jumpTo={jumpTo}
+        handleMouseOver={handleHistoryMouseOver}
       />
     </GameWrapper>
   );

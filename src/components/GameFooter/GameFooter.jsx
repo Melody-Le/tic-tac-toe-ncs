@@ -17,6 +17,7 @@ function GameFooter({
   player,
   currentStep,
   jumpTo,
+  handleMouseOver,
 }) {
   const [showHistory, setShowHistory] = useState(false);
   const newRef = useRef(null);
@@ -63,6 +64,7 @@ function GameFooter({
               currentStep={currentStep}
               jumpTo={jumpTo}
               onShowHistory={handleShowHistory}
+              handleMouseOver={handleMouseOver}
             />
           )}
         </>

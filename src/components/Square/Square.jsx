@@ -8,8 +8,10 @@ function Square({
   winningLine,
   squareIndex,
   gameState,
+  squareIndexOnHistoryHover,
 }) {
   const cellWin = winningLine?.includes(squareIndex);
+  const cellOnHistoryHover = squareIndexOnHistoryHover === squareIndex;
   return (
     <Cell
       onClick={onSquareClick}
@@ -17,6 +19,7 @@ function Square({
       $player={player}
       $cellWin={cellWin ? 1 : 0}
       $gamestate={gameState}
+      $onHistoryHover={cellOnHistoryHover ? 1 : 0}
     >
       {value}
     </Cell>

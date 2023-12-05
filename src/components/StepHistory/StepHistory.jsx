@@ -10,6 +10,7 @@ function StepHistory({
   jumpTo,
   onShowHistory,
   innerRef,
+  handleMouseOver,
 }) {
   let activeStep = [];
   if (player === PLAYER_X) {
@@ -30,6 +31,8 @@ function StepHistory({
         currentStep={currentStep}
         player={player}
         active={activeStep?.includes(index + 1)}
+        handleMouseOver={handleMouseOver}
+        squareIndex={history[index].squareIndex}
       />
     );
   });
