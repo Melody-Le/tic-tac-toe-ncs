@@ -13,14 +13,14 @@ export const Cell = styled.div`
   font-family: "Varela Round", sans-serif;
   color: ${({ value }) =>
     value === "X" ? theme.primary : theme.secondPrimary};
-  background-color: ${({ cellWin }) => {
-    return cellWin ? theme.highlight : theme.secondDarkBlue;
+  background-color: ${({ $cellWin }) => {
+    return $cellWin ? theme.highlight : theme.secondDarkBlue;
   }};
   border-radius: ${borderRadius}rem;
   cursor: pointer;
   caret-color: transparent;
   transition: all 0.5s ease-in-out;
-  ${({ value, player, gameState }) => `
+  ${({ value, player }) => `
       &:hover {
         background-color: ${!value && theme.secondHightlight}
       }

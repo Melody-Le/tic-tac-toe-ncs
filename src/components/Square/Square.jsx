@@ -14,9 +14,9 @@ function Square({
     <Cell
       onClick={onSquareClick}
       value={value}
-      player={player}
-      cellWin={cellWin}
-      gameState={gameState}
+      $player={player}
+      $cellWin={cellWin ? 1 : 0}
+      $gamestate={gameState}
     >
       {value}
     </Cell>

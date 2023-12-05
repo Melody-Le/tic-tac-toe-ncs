@@ -10,4 +10,5 @@ export const GameOverContainer = styled.div`
   font-weight: 700;
   width: 100%;
   text-align: center;
+  caret-color: transparent;
 `;
