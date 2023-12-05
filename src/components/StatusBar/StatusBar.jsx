@@ -5,14 +5,16 @@ import { GameState } from "../../store/constant";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { fontSize } from "../../theme/commonStyles";
 
-function StatusBar({ gameState, player }) {
+function StatusBar({ gameState, player, currentStep, backAStep }) {
   return (
     <>
       <StatusBarContainer>
         {gameState === GameState.inProgress ? (
           <>
-            <PlayerTurn>{player} TURN</PlayerTurn>
-            <BackButton>
+            <PlayerTurn>
+              STEP {currentStep + 1} : {player} TURN
+            </PlayerTurn>
+            <BackButton onClick={backAStep}>
               <RiArrowGoBackLine size={`${fontSize.md}rem`} />
             </BackButton>
           </>
