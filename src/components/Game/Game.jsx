@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Square from "../Square/Square";
-import { RiArrowGoBackLine } from "react-icons/ri";
-import { fontSize } from "../../theme/commonStyles";
-
 import {
   GameState,
   PLAYER_O,
@@ -10,15 +6,10 @@ import {
   LOCAL_STORAGE_KEY,
 } from "../../store/constant.js";
 import { defineWinner } from "../../store/action";
-import GameOver from "../GameOver/GameOver";
+import { GameWrapper, RestartButton } from "./Game.styled";
+import StatusBar from "../StatusBar/StatusBar";
 import Board from "../Board/Board";
-import {
-  GameWrapper,
-  StatusBar,
-  RestartButton,
-  PlayerTurn,
-  BackButton,
-} from "./Game.styled";
+import GameFooter from "../GameFooter/GameFooter.jsx";
 
 function Game() {
   const [history, setHistory] = useState(() => {
@@ -38,6 +29,7 @@ function Game() {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, [...history, nextSquares]);
     player === PLAYER_X ? setPlayer(PLAYER_O) : setPlayer(PLAYER_X);
   };
+
   const handleReset = () => {
     localStorage.clear();
     setHistory([Array(9).fill(null)]);
@@ -49,6 +41,7 @@ function Game() {
   useEffect(() => {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(history));
   }, [history]);
+
   useEffect(() => {
     const winner = defineWinner(currentSquares)?.winner;
     switch (winner) {
@@ -67,21 +60,11 @@ function Game() {
         setGameState(GameState.inProgress);
     }
   }, [currentSquares]);
+
   return (
     <>
       <GameWrapper>
-        <StatusBar>
-          {gameState === GameState.inProgress ? (
-            <>
-              <PlayerTurn>{player} TURN</PlayerTurn>
-              <BackButton>
-                <RiArrowGoBackLine size={`${fontSize.md}rem`} />
-              </BackButton>
-            </>
-          ) : (
-            <GameOver gameState={gameState} />
-          )}
-        </StatusBar>
+        <StatusBar gameState={gameState} player={player} />
         <Board
           player={player}
           squares={currentSquares}
@@ -89,7 +72,7 @@ function Game() {
           gameState={gameState}
           winningLine={winningLine}
         />
-        <RestartButton onClick={handleReset}>Restart Game</RestartButton>
+        <GameFooter onClick={handleReset} />
       </GameWrapper>
     </>
   );
