@@ -6,13 +6,15 @@ import {
   RestartButtonInProgress,
 } from "./GameHeader.styled";
 import { GameState } from "../../utils/constant";
+import { useGame } from "../../Context/GameContext";
 
-function GameHeader({ gameState, player, currentStep, restart }) {
+function GameHeader() {
+  const { gameState, currentStep, handleRestart, player } = useGame();
   return (
     <GameHeaderContainer>
       {gameState === GameState.inProgress ? (
         <>
-          <RestartButtonInProgress onClick={restart}>
+          <RestartButtonInProgress onClick={handleRestart}>
             Restart
           </RestartButtonInProgress>
           <PlayerTurn>
@@ -20,7 +22,9 @@ function GameHeader({ gameState, player, currentStep, restart }) {
           </PlayerTurn>
         </>
       ) : (
-        <RestartButtonGameOver onClick={restart}>Restart</RestartButtonGameOver>
+        <RestartButtonGameOver onClick={handleRestart}>
+          Restart
+        </RestartButtonGameOver>
       )}
     </GameHeaderContainer>
   );

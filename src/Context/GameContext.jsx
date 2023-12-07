@@ -114,6 +114,7 @@ export function GameProvider({ children }) {
     }
   }, [currentSquares]);
   const value = {
+    history,
     gameState,
     currentStep,
     handleBackAStep,

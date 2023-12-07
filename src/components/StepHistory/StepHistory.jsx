@@ -2,16 +2,11 @@ import React from "react";
 import Step from "../Step/Step";
 import { PLAYER_X } from "../../utils/constant.js";
 import { StepHistoryWrapper } from "./StepHistory.styled";
+import { useGame } from "../../Context/GameContext";
 
-function StepHistory({
-  history,
-  player,
-  currentStep,
-  jumpTo,
-  onShowHistory,
-  innerRef,
-  handleMouseOver,
-}) {
+function StepHistory({ onShowHistory, innerRef }) {
+  const { history, player, jumpTo, handleMouseOver } = useGame();
+
   let activeStep = [];
   if (player === PLAYER_X) {
     activeStep = [1, 3, 5, 7, 9];
@@ -28,8 +23,6 @@ function StepHistory({
           onShowHistory(false);
         }}
         stepDisplay={history[index].step + 1}
-        currentStep={currentStep}
-        player={player}
         active={activeStep?.includes(index + 1)}
         handleMouseOver={handleMouseOver}
         squareIndex={history[index].squareIndex}
@@ -38,7 +31,7 @@ function StepHistory({
   });
   return (
     <>
-      {history.length > 1 ? (
+      {history?.length > 1 ? (
         <StepHistoryWrapper ref={innerRef}>{stepHistory}</StepHistoryWrapper>
       ) : (
         <StepHistoryWrapper ref={innerRef}>

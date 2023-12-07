@@ -1,20 +1,24 @@
 import React from "react";
 import { Cell } from "./Square.styled";
+import { useGame } from "../../Context/GameContext";
 
-function Square({
-  value,
-  onSquareClick,
-  player,
-  winningLine,
-  squareIndex,
-  gameState,
-  squareIndexOnHistoryHover,
-}) {
+function Square({ squareIndex }) {
+  const {
+    gameState,
+    player,
+    winningLine,
+    squareIndexOnHistoryHover,
+    handleSquareClick,
+    currentSquares,
+  } = useGame();
+
   const cellWin = winningLine?.includes(squareIndex);
   const cellOnHistoryHover = squareIndexOnHistoryHover === squareIndex;
+  const value = currentSquares[squareIndex];
+
   return (
     <Cell
-      onClick={onSquareClick}
+      onClick={() => handleSquareClick(squareIndex)}
       value={value}
       $player={player}
       $cellWin={cellWin ? 1 : 0}
