@@ -1,21 +1,32 @@
 import Square from "../Square/Square";
 import { SquareWrapper } from "./Board.styled";
-import { GameState, PLAYER_X } from "../../store/constant.js";
+import { GameState, PLAYER_X } from "../../utils/constant.js";
+import { useGame } from "../../Context/GameContext";
 
-function Board({
-  player,
-  squares,
-  onPlay,
-  gameState,
-  winningLine,
-  squareIndexOnHistoryHover,
-}) {
-  const handleSquareClick = (index) => {
-    const nextSquare = [...squares];
-    if (nextSquare[index] || gameState !== GameState.inProgress) return;
-    nextSquare[index] = player === PLAYER_X ? "X" : "O";
-    onPlay(nextSquare, index);
-  };
+function Board(
+  {
+    // player,
+    // squares,
+    // onPlay,
+    // gameState,
+    // winningLine,
+    // squareIndexOnHistoryHover,
+  }
+) {
+  const {
+    player,
+    currentSquares,
+    gameState,
+    winningLine,
+    squareIndexOnHistoryHover,
+    handleSquareClick,
+  } = useGame();
+  // const handleSquareClick = (index) => {
+  //   const nextSquare = [...squares];
+  //   if (nextSquare[index] || gameState !== GameState.inProgress) return;
+  //   nextSquare[index] = player === PLAYER_X ? "X" : "O";
+  //   onPlay(nextSquare, index);
+  // };
 
   const createInitialBoard = () => {
     return Array(3)
@@ -30,7 +41,7 @@ function Board({
                 key={squareIndex}
                 squareIndex={squareIndex}
                 squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-                value={squares[squareIndex]}
+                value={currentSquares[squareIndex]}
                 onSquareClick={() => handleSquareClick(squareIndex)}
                 player={player}
                 winningLine={winningLine}

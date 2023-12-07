@@ -1,6 +1,6 @@
 import React from "react";
 import Step from "../Step/Step";
-import { PLAYER_X } from "../../store/constant.js";
+import { PLAYER_X } from "../../utils/constant.js";
 import { StepHistoryWrapper } from "./StepHistory.styled";
 
 function StepHistory({

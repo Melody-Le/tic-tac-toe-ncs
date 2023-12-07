@@ -5,7 +5,7 @@ import {
   RestartButtonGameOver,
   RestartButtonInProgress,
 } from "./GameHeader.styled";
-import { GameState } from "../../store/constant";
+import { GameState } from "../../utils/constant";
 
 function GameHeader({ gameState, player, currentStep, restart }) {
   return (

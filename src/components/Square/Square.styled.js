@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
 import { borderRadius, fontSize } from "../../theme/commonStyles";
-import { PLAYER_X } from "../../store/constant.js";
+import { PLAYER_X } from "../../utils/constant.js";
 
 export const Cell = styled.div`
   display: grid;

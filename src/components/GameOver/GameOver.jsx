@@ -1,5 +1,5 @@
 import React from "react";
-import { GameState } from "../../store/constant";
+import { GameState } from "../../utils/constant";
 import { GameOverContainer } from "./GameOver.styled";
 
 function GameOver({ gameState }) {
