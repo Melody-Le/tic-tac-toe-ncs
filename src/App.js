@@ -1,11 +1,11 @@
-import Board from "./components/Board/Board";
 import GlobalStyle from "./theme/globalStyle";
+import Game from "./components/Game/Game";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Board />
+      <Game />
     </>
   );
 }

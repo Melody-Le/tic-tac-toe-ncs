@@ -1,41 +1,47 @@
-import React from "react";
 import Square from "../Square/Square";
-import { RiArrowGoBackLine } from "react-icons/ri";
-import { fontSize } from "../../theme/commonStyles";
-import {
-  BoardWrapper,
-  SquareWrapper,
-  StatusBar,
-  PlayerTurn,
-  BackButton,
-  RestartButton,
-} from "./Board.styled";
+import { SquareWrapper } from "./Board.styled";
+import { GameState, PLAYER_X } from "../../store/constant.js";
 
-function Board() {
-  return (
-    <>
-      <BoardWrapper>
-        <StatusBar>
-          <PlayerTurn>X Turn</PlayerTurn>
-          <BackButton>
-            <RiArrowGoBackLine size={`${fontSize.md}rem`} />
-          </BackButton>
-        </StatusBar>
-        <SquareWrapper>
-          <Square value={"X"} />
-          <Square value={"0"} />
-          <Square value={3} />
-          <Square value={4} />
-          <Square value={5} />
-          <Square value={6} />
-          <Square value={7} />
-          <Square value={8} />
-          <Square value={9} />
-        </SquareWrapper>
-        <RestartButton>Restart Game</RestartButton>
-      </BoardWrapper>
-    </>
-  );
+function Board({
+  player,
+  squares,
+  onPlay,
+  gameState,
+  winningLine,
+  squareIndexOnHistoryHover,
+}) {
+  const handleSquareClick = (index) => {
+    const nextSquare = [...squares];
+    if (nextSquare[index] || gameState !== GameState.inProgress) return;
+    nextSquare[index] = player === PLAYER_X ? "X" : "O";
+    onPlay(nextSquare, index);
+  };
+
+  const createInitialBoard = () => {
+    return Array(3)
+      .fill(null)
+      .map((_, rowIndex) =>
+        Array(3)
+          .fill(null)
+          .map((_, colIndex) => {
+            const squareIndex = rowIndex * 3 + colIndex;
+            return (
+              <Square
+                key={squareIndex}
+                squareIndex={squareIndex}
+                squareIndexOnHistoryHover={squareIndexOnHistoryHover}
+                value={squares[squareIndex]}
+                onSquareClick={() => handleSquareClick(squareIndex)}
+                player={player}
+                winningLine={winningLine}
+                gameState={gameState}
+              />
+            );
+          })
+      );
+  };
+  const initialBoard = createInitialBoard();
+  return <SquareWrapper>{initialBoard}</SquareWrapper>;
 }
 
 export default Board;
