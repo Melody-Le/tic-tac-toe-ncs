@@ -11,4 +11,5 @@ export const StepHistoryWrapper = styled.div`
   background-color: ${theme.secondDarkBlue};
   border-radius: ${borderRadius}rem;
   padding: ${padding.md}rem;
+  caret-color: transparent;
 `;

@@ -6,24 +6,20 @@ import {
 } from "./GameFooter.styled";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { fontSize } from "../../theme/commonStyles";
-import { GameState } from "../../store/constant";
+import { GameState } from "../../utils/constant";
 import GameOver from "../GameOver/GameOver";
 import StepHistory from "../StepHistory/StepHistory";
+import { useGame } from "../../Context/GameContext";
 
-function GameFooter({
-  backAStep,
-  gameState,
-  history,
-  player,
-  currentStep,
-  jumpTo,
-  handleMouseOver,
-}) {
+function GameFooter() {
+  const { handleBackAStep, gameState } = useGame();
+
   const [showHistory, setShowHistory] = useState(false);
+
   const newRef = useRef(null);
+
   const handleShowHistory = () => {
     setShowHistory((prev) => !prev);
-    console.log(showHistory);
   };
 
   const handleOutsideClick = (event) => {
@@ -47,30 +43,23 @@ function GameFooter({
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   });
+
   return (
     <FooterWrapper>
       {gameState === GameState.inProgress ? (
         <>
-          <BackButton onClick={backAStep}>
+          <BackButton onClick={handleBackAStep}>
             <RiArrowGoBackLine size={`${fontSize.md}rem`} />
           </BackButton>
           <ShowHistoryButton onClick={handleShowHistory}>
             STEP HISTORY
           </ShowHistoryButton>
           {showHistory && (
-            <StepHistory
-              innerRef={newRef}
-              history={history}
-              player={player}
-              currentStep={currentStep}
-              jumpTo={jumpTo}
-              onShowHistory={handleShowHistory}
-              handleMouseOver={handleMouseOver}
-            />
+            <StepHistory innerRef={newRef} onShowHistory={handleShowHistory} />
           )}
         </>
       ) : (
-        <GameOver gameState={gameState} />
+        <GameOver />
       )}
     </FooterWrapper>
   );

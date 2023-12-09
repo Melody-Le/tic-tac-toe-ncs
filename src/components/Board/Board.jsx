@@ -1,22 +1,8 @@
 import Square from "../Square/Square";
 import { SquareWrapper } from "./Board.styled";
-import { GameState, PLAYER_X } from "../../store/constant.js";
+import { useGame } from "../../Context/GameContext";
 
-function Board({
-  player,
-  squares,
-  onPlay,
-  gameState,
-  winningLine,
-  squareIndexOnHistoryHover,
-}) {
-  const handleSquareClick = (index) => {
-    const nextSquare = [...squares];
-    if (nextSquare[index] || gameState !== GameState.inProgress) return;
-    nextSquare[index] = player === PLAYER_X ? "X" : "O";
-    onPlay(nextSquare, index);
-  };
-
+function Board() {
   const createInitialBoard = () => {
     return Array(3)
       .fill(null)
@@ -25,18 +11,7 @@ function Board({
           .fill(null)
           .map((_, colIndex) => {
             const squareIndex = rowIndex * 3 + colIndex;
-            return (
-              <Square
-                key={squareIndex}
-                squareIndex={squareIndex}
-                squareIndexOnHistoryHover={squareIndexOnHistoryHover}
-                value={squares[squareIndex]}
-                onSquareClick={() => handleSquareClick(squareIndex)}
-                player={player}
-                winningLine={winningLine}
-                gameState={gameState}
-              />
-            );
+            return <Square key={squareIndex} squareIndex={squareIndex} />;
           })
       );
   };

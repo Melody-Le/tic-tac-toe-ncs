@@ -1,8 +1,10 @@
 import React from "react";
-import { GameState } from "../../store/constant";
+import { GameState } from "../../utils/constant";
 import { GameOverContainer } from "./GameOver.styled";
+import { useGame } from "../../Context/GameContext";
 
-function GameOver({ gameState }) {
+function GameOver() {
+  const { gameState } = useGame();
   switch (gameState) {
     case GameState.inProgress:
       return <></>;
