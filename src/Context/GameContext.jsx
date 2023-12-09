@@ -24,6 +24,7 @@ export function GameProvider({ children }) {
       ]
     );
   });
+
   const [currentStep, setCurrentStep] = useState(() => {
     const histoyLCS = JSON.parse(
       window.localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -35,11 +36,16 @@ export function GameProvider({ children }) {
     }
   });
   const [gameState, setGameState] = useState(GameState.inProgress);
+
   const [winningLine, setwinningLine] = useState([]);
+
   const [player, setPlayer] = useState(PLAYER_X);
+
   const currentSquares = history[currentStep]?.squares;
+
   const [squareIndexOnHistoryHover, setSquareIndexOnHistoryHover] =
     useState(null);
+
   const handlePlay = (nextSquares, clickedSquareIndex) => {
     const nextHistory = [
       ...history.slice(0, currentStep + 1),
@@ -67,11 +73,19 @@ export function GameProvider({ children }) {
     setPlayer(PLAYER_X);
     setwinningLine([]);
     setCurrentStep(0);
+    setSquareIndexOnHistoryHover(null);
   };
   const handleHistoryMouseOver = (index) => {
     setSquareIndexOnHistoryHover(index);
   };
+  const handleHistoryMouseOut = () => {
+    setSquareIndexOnHistoryHover(null);
+  };
 
+  const handleHistoryStepClick = (index) => {
+    jumpTo(index - 1);
+    setSquareIndexOnHistoryHover(null);
+  };
   const jumpTo = (nextStep) => {
     setCurrentStep(nextStep);
     setPlayer(nextStep % 2 === 0 ? PLAYER_X : PLAYER_O);
@@ -81,7 +95,7 @@ export function GameProvider({ children }) {
   };
 
   const handleBackAStep = () => {
-    jumpTo(currentStep - 2);
+    currentStep > 1 && jumpTo(currentStep - 2);
   };
 
   const handleSquareClick = (index) => {
@@ -116,16 +130,17 @@ export function GameProvider({ children }) {
   const value = {
     history,
     gameState,
-    currentStep,
-    handleBackAStep,
-    handleRestart,
-    player,
     currentSquares,
+    currentStep,
+    player,
     winningLine,
     squareIndexOnHistoryHover,
     jumpTo,
+    handleRestart,
+    handleBackAStep,
     handleHistoryMouseOver,
-    handlePlay,
+    handleHistoryMouseOut,
+    handleHistoryStepClick,
     handleSquareClick,
   };
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

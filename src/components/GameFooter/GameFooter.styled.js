@@ -26,4 +26,5 @@ export const ShowHistoryButton = styled.button`
   border-radius: ${borderRadius}rem;
   transition: background-color 0.2s ease-in-out;
   text-align: center;
+  caret-color: transparent;
 `;
