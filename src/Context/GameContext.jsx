@@ -3,7 +3,7 @@ import { GameState, PLAYER_X, PLAYER_O } from "../utils/constant";
 import { LOCAL_STORAGE_KEY } from "../utils/constant";
 import { defineWinner } from "../utils/fn";
 
-const GameContext = createContext({});
+export const GameContext = createContext({});
 
 export function useGame() {
   return useContext(GameContext);

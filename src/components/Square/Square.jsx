@@ -19,6 +19,7 @@ function Square({ squareIndex }) {
   return (
     <Cell
       onClick={() => handleSquareClick(squareIndex)}
+      data-testid={`cell-${squareIndex}`}
       value={value}
       $player={player}
       $cellWin={cellWin ? 1 : 0}
