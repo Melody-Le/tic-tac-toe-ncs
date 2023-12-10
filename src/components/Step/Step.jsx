@@ -20,7 +20,6 @@ function Step({ stepDisplay, onShowHistory, active, squareIndex }) {
     stepDescription = `STEP # ${stepDisplay}`;
   }
 
-  const description = `BACK TO STEP # ${stepDisplay}`;
   return (
     <>
       {currentStep + 1 !== stepDisplay && (

@@ -1,6 +1,5 @@
 import Square from "../Square/Square";
 import { SquareWrapper } from "./Board.styled";
-import { useGame } from "../../Context/GameContext";
 
 function Board() {
   const createInitialBoard = () => {

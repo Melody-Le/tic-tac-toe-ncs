@@ -1,6 +1,7 @@
 import React from "react";
 import { Cell } from "./Square.styled";
 import { useGame } from "../../Context/GameContext";
+import { GameState } from "../../utils/constant";
 
 function Square({ squareIndex }) {
   const {
@@ -21,6 +22,7 @@ function Square({ squareIndex }) {
       onClick={() => handleSquareClick(squareIndex)}
       data-testid={`cell-${squareIndex}`}
       value={value}
+      disabled={!!value || gameState !== GameState.inProgress}
       $player={player}
       $cellWin={cellWin ? 1 : 0}
       $gamestate={gameState}
