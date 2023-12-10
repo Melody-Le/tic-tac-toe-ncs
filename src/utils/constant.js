@@ -1,8 +1,8 @@
 export const GameState = {
-  playerXWins: 0,
-  playerOWins: 1,
-  draw: 2,
-  inProgress: 3,
+  playerXWins: "X WINS",
+  playerOWins: "O WINS",
+  draw: "DRAW",
+  inProgress: "GAME IN PROGRESS",
 };
 export const PLAYER_X = "X";
 export const PLAYER_O = "O";

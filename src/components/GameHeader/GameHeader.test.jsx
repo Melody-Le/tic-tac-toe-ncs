@@ -23,7 +23,7 @@ describe("GameHeader Flow", () => {
       })
   );
 
-  test("when game in progress", () => {
+  test("when game in progress, then click restart button", () => {
     const { rerender } = render(<GameHeader />, { providerProps });
     const restartBtn = screen.getByRole("button", { name: /restart/i });
     const playerTurnAndStep = screen.getByTestId("playerTurnAndStep");
