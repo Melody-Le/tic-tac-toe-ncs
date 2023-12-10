@@ -1,11 +1,10 @@
-import Step from "./Step";
 import {
   render,
   screen,
   fireEvent,
 } from "../../test-utils/testing-library-utils";
-import { GameState, PLAYER_X, PLAYER_O } from "../../utils/constant";
-import { GameContext } from "../../Context/GameContext";
+import { GameState, PLAYER_O } from "../../utils/constant";
+import Step from "./Step";
 
 describe("StepItem Flow", () => {
   let providerProps;
@@ -14,6 +13,7 @@ describe("StepItem Flow", () => {
       (providerProps = {
         player: PLAYER_O,
         gameState: GameState.inProgress,
+        currentStep: 3,
         history: [
           {
             step: 0,
@@ -66,6 +66,16 @@ describe("StepItem Flow", () => {
     expect(stepBtn).toBeDisabled();
   });
 
+  test("display the innactive step: step 1", () => {
+    render(<Step stepDisplay={1} squareIndex={0} />, {
+      providerProps,
+    });
+    const stepBtn = screen.getByTestId("step-1");
+    expect(stepBtn).toBeInTheDocument();
+    expect(stepBtn).toHaveTextContent("STEP # 1");
+    expect(stepBtn).toBeDisabled();
+  });
+
   test("display the active step: at step 2", () => {
     const trigger = jest.fn();
     render(<Step stepDisplay={2} squareIndex={1} onShowHistory={trigger} />, {
@@ -77,7 +87,9 @@ describe("StepItem Flow", () => {
     expect(stepBtn).not.toBeDisabled();
 
     fireEvent.click(stepBtn);
+
     expect(providerProps.handleHistoryStepClick).toHaveBeenCalledTimes(1);
+    expect(providerProps.handleHistoryStepClick).toHaveBeenCalledWith(2);
     expect(trigger).toHaveBeenCalledTimes(1);
   });
 });

@@ -7,8 +7,8 @@ function Step({ stepDisplay, onShowHistory, squareIndex }) {
     handleHistoryMouseOver,
     handleHistoryMouseOut,
     handleHistoryStepClick,
-    history,
     player,
+    currentStep,
   } = useGame();
 
   let activeStep = [];
@@ -24,39 +24,38 @@ function Step({ stepDisplay, onShowHistory, squareIndex }) {
 
   if (stepDisplay === 0) {
     stepDescription = `START GAME`;
-  } else if (stepDisplay === history?.length - 1) {
+  } else if (stepDisplay === currentStep) {
     stepDescription = `LATEST STEP : ${stepDisplay}`;
   } else {
     stepDescription = `STEP # ${stepDisplay}`;
   }
 
   return (
-    <>
-      <div
-        onMouseOver={() => handleHistoryMouseOver(squareIndex)}
-        onMouseOut={handleHistoryMouseOut}
-      >
-        {active ? (
-          <StepItem>
-            <button
-              onClick={() => {
-                handleHistoryStepClick(stepDisplay);
-                onShowHistory();
-              }}
-              data-testid={`step-${stepDisplay}`}
-            >
-              BACK TO {stepDescription}
-            </button>
-          </StepItem>
-        ) : (
-          <StepItemInactive>
-            <button data-testid={`step-${stepDisplay}`} disabled={true}>
-              {stepDescription}
-            </button>
-          </StepItemInactive>
-        )}
-      </div>
-    </>
+    <div
+      onMouseOver={() => handleHistoryMouseOver(squareIndex)}
+      onMouseOut={handleHistoryMouseOut}
+      data-testid="steps"
+    >
+      {active ? (
+        <StepItem>
+          <button
+            onClick={() => {
+              handleHistoryStepClick(stepDisplay);
+              onShowHistory();
+            }}
+            data-testid={`step-${stepDisplay}`}
+          >
+            BACK TO {stepDescription}
+          </button>
+        </StepItem>
+      ) : (
+        <StepItemInactive>
+          <button data-testid={`step-${stepDisplay}`} disabled={true}>
+            {stepDescription}
+          </button>
+        </StepItemInactive>
+      )}
+    </div>
   );
 }
 
