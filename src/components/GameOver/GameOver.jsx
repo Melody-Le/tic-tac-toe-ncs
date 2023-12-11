@@ -11,7 +11,7 @@ function GameOver() {
     case GameState.playerOWins:
       return (
         <GameOverContainer data-testid="gameOver">
-          {GameState.playerXWins}
+          {GameState.playerOWins}
         </GameOverContainer>
       );
     case GameState.playerXWins:
