@@ -20,6 +20,7 @@ function Square({ squareIndex }) {
   return (
     <Cell
       onClick={() => handleSquareClick(squareIndex)}
+      role="gridcell"
       data-testid={`cell-${squareIndex}`}
       value={value}
       disabled={!!value || gameState !== GameState.inProgress}
