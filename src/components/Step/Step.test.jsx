@@ -72,7 +72,7 @@ describe("StepItem Flow", () => {
     });
     const stepBtn = screen.getByTestId("step-1");
     expect(stepBtn).toBeInTheDocument();
-    expect(stepBtn).toHaveTextContent("STEP # 1");
+    expect(stepBtn).toHaveTextContent("STEP : 1");
     expect(stepBtn).toBeDisabled();
   });
 
@@ -83,7 +83,7 @@ describe("StepItem Flow", () => {
     });
     const stepBtn = screen.getByTestId("step-2");
     expect(stepBtn).toBeInTheDocument();
-    expect(stepBtn).toHaveTextContent("BACK TO STEP # 2");
+    expect(stepBtn).toHaveTextContent("BACK TO STEP : 2");
     expect(stepBtn).not.toBeDisabled();
 
     fireEvent.click(stepBtn);

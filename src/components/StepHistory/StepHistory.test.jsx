@@ -62,9 +62,9 @@ describe("StepHistory flow", () => {
     expect(stepList).toHaveLength(4);
     expect(stepBtn0).toHaveTextContent("START GAME");
     expect(stepBtn0).toBeDisabled();
-    expect(stepBtn1).toHaveTextContent("STEP # 1");
+    expect(stepBtn1).toHaveTextContent("STEP : 1");
     expect(stepBtn1).toBeDisabled();
-    expect(stepBtn2).toHaveTextContent("BACK TO STEP # 2");
+    expect(stepBtn2).toHaveTextContent("BACK TO STEP : 2");
     expect(stepBtn2).not.toBeDisabled();
     expect(stepBtn3).toHaveTextContent("LATEST STEP : 3");
     expect(stepBtn3).toBeDisabled();

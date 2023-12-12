@@ -27,7 +27,7 @@ function Step({ stepDisplay, onShowHistory, squareIndex }) {
   } else if (stepDisplay === currentStep) {
     stepDescription = `LATEST STEP : ${stepDisplay}`;
   } else {
-    stepDescription = `STEP # ${stepDisplay}`;
+    stepDescription = `STEP : ${stepDisplay}`;
   }
 
   return (
@@ -50,7 +50,7 @@ function Step({ stepDisplay, onShowHistory, squareIndex }) {
         </StepItem>
       ) : (
         <StepItemInactive>
-          <button data-testid={`step-${stepDisplay}`} disabled={true}>
+          <button data-testid={`step-${stepDisplay}`} disabled>
             {stepDescription}
           </button>
         </StepItemInactive>
