@@ -113,7 +113,7 @@ export function GameProvider({ children }) {
     const winner = defineWinner(currentSquares)?.winner;
     switch (winner) {
       case "X":
-        setGameState(GameState.playerOWins);
+        setGameState(GameState.playerXWins);
         setwinningLine(defineWinner(currentSquares)?.winnningPositons);
         break;
       case "O":

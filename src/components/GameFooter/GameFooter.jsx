@@ -55,7 +55,7 @@ function GameFooter() {
             onClick={handleShowHistory}
             data-testid="showHistoryButton"
           >
-            STEP HISTORY
+            SHOW HISTORY
           </ShowHistoryButton>
           {showHistory && (
             <StepHistory innerRef={newRef} onShowHistory={handleShowHistory} />
