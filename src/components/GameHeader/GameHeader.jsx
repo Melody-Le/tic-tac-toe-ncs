@@ -17,7 +17,7 @@ function GameHeader() {
           <RestartButtonInProgress onClick={handleRestart}>
             Restart
           </RestartButtonInProgress>
-          <PlayerTurn>
+          <PlayerTurn data-testid="playerTurnAndStep">
             STEP {currentStep + 1} : {player} TURN
           </PlayerTurn>
         </>

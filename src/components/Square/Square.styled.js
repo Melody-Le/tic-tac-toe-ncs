@@ -4,7 +4,7 @@ import { theme } from "../../theme/theme";
 import { borderRadius, fontSize } from "../../theme/commonStyles";
 import { PLAYER_X } from "../../utils/constant.js";
 
-export const Cell = styled.div`
+export const Cell = styled.button`
   display: grid;
   place-content: center;
   font-size: ${fontSize.xl}rem;
@@ -24,6 +24,9 @@ export const Cell = styled.div`
   cursor: pointer;
   caret-color: transparent;
   transition: all 0.5s ease-in-out;
+  &:disabled {
+    pointer-events: none;
+  }
   ${({ value, $player }) => `
       &:hover {
         background-color: ${!value && theme.secondHightlight}

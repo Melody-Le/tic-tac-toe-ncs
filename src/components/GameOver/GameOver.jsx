@@ -9,11 +9,23 @@ function GameOver() {
     case GameState.inProgress:
       return <></>;
     case GameState.playerOWins:
-      return <GameOverContainer>O Wins</GameOverContainer>;
+      return (
+        <GameOverContainer data-testid="gameOver">
+          {GameState.playerOWins}
+        </GameOverContainer>
+      );
     case GameState.playerXWins:
-      return <GameOverContainer>X Wins</GameOverContainer>;
+      return (
+        <GameOverContainer data-testid="gameOver">
+          {GameState.playerXWins}
+        </GameOverContainer>
+      );
     case GameState.draw:
-      return <GameOverContainer>Draw</GameOverContainer>;
+      return (
+        <GameOverContainer data-testid="gameOver">
+          {GameState.draw}
+        </GameOverContainer>
+      );
     default:
       return <></>;
   }

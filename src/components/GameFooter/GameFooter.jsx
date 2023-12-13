@@ -48,11 +48,14 @@ function GameFooter() {
     <FooterWrapper>
       {gameState === GameState.inProgress ? (
         <>
-          <BackButton onClick={handleBackAStep}>
+          <BackButton onClick={handleBackAStep} data-testid="backAStepBtn">
             <RiArrowGoBackLine size={`${fontSize.md}rem`} />
           </BackButton>
-          <ShowHistoryButton onClick={handleShowHistory}>
-            STEP HISTORY
+          <ShowHistoryButton
+            onClick={handleShowHistory}
+            data-testid="showHistoryButton"
+          >
+            SHOW HISTORY
           </ShowHistoryButton>
           {showHistory && (
             <StepHistory innerRef={newRef} onShowHistory={handleShowHistory} />

@@ -24,6 +24,7 @@ export const RestartButton = styled.button`
   font-weight: 700;
   color: ${theme.highlight};
   transition: 0.2s;
+  caret-color: transparent;
 `;
 export const RestartButtonInProgress = styled(RestartButton)`
   grid-column: span 4;

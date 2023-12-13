@@ -1,18 +1,10 @@
 import React from "react";
 import Step from "../Step/Step";
-import { PLAYER_X } from "../../utils/constant.js";
 import { StepHistoryWrapper } from "./StepHistory.styled";
 import { useGame } from "../../Context/GameContext";
 
 function StepHistory({ onShowHistory, innerRef }) {
-  const { history, player } = useGame();
-
-  let activeStep = [];
-  if (player === PLAYER_X) {
-    activeStep = [1, 3, 5, 7, 9];
-  } else {
-    activeStep = [2, 4, 6, 8];
-  }
+  const { history } = useGame();
 
   const stepHistory = history
     ?.map((_, index) => {
@@ -20,9 +12,10 @@ function StepHistory({ onShowHistory, innerRef }) {
       return (
         <Step
           key={stepNumber}
+          itemname={stepNumber}
+          role={stepNumber}
           onShowHistory={onShowHistory}
           stepDisplay={stepNumber}
-          active={activeStep?.includes(stepNumber)}
           squareIndex={history[index].squareIndex}
         />
       );
@@ -32,9 +25,13 @@ function StepHistory({ onShowHistory, innerRef }) {
   return (
     <>
       {history?.length > 1 ? (
-        <StepHistoryWrapper ref={innerRef}>{stepHistory}</StepHistoryWrapper>
+        <StepHistoryWrapper ref={innerRef} data-testid="stepHistory">
+          {stepHistory}
+        </StepHistoryWrapper>
       ) : (
-        <StepHistoryWrapper ref={innerRef}>LETS START GAME</StepHistoryWrapper>
+        <StepHistoryWrapper ref={innerRef} data-testid="stepHistory">
+          LETS START GAME
+        </StepHistoryWrapper>
       )}
     </>
   );

@@ -3,7 +3,7 @@ import { GameState, PLAYER_X, PLAYER_O } from "../utils/constant";
 import { LOCAL_STORAGE_KEY } from "../utils/constant";
 import { defineWinner } from "../utils/fn";
 
-const GameContext = createContext({});
+export const GameContext = createContext({});
 
 export function useGame() {
   return useContext(GameContext);
@@ -113,7 +113,7 @@ export function GameProvider({ children }) {
     const winner = defineWinner(currentSquares)?.winner;
     switch (winner) {
       case "X":
-        setGameState(GameState.playerOWins);
+        setGameState(GameState.playerXWins);
         setwinningLine(defineWinner(currentSquares)?.winnningPositons);
         break;
       case "O":
