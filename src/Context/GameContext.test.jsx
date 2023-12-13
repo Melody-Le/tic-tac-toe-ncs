@@ -1,6 +1,4 @@
-// import { render, screen } from "../../test-utils/testing-library-utils";
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Game from "../components/Game/Game";
 import { GameProvider, GameContext, useGame } from "./GameContext";
 import { theme } from "../theme/theme";
@@ -157,6 +155,22 @@ describe("Game Logic", () => {
       "STEP 2 : O TURN"
     );
 
+    fireEvent.click(screen.queryByRole("button", { name: /restart/i }));
+  });
+  test("when user fill all square and can not win, game Draw", () => {
+    render(
+      <GameProvider>
+        <Game />
+      </GameProvider>
+    );
+    const gridCell = screen.getAllByRole("gridcell");
+
+    [0, 3, 6, 8, 7, 4, 5, 1, 2].forEach((squareIndex) => {
+      fireEvent.click(gridCell[squareIndex]);
+    });
+
+    const gameOverContainer = screen.queryByTestId("gameOver");
+    expect(gameOverContainer).toHaveTextContent("DRAW");
     fireEvent.click(screen.queryByRole("button", { name: /restart/i }));
   });
 });

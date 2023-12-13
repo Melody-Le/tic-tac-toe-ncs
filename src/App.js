@@ -1,4 +1,4 @@
-import GlobalStyle from "./theme/globalStyle";
+import GlobalStyle from "./theme/GlobalStyle";
 import Game from "./components/Game/Game";
 import { GameProvider } from "./Context/GameContext";
 
