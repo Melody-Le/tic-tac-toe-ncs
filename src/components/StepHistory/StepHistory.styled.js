@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-import { padding, borderRadius, gap } from "../../theme/commonStyles";
+import {
+  padding,
+  borderRadius,
+  gap,
+  BREAKPONITS,
+  fontSize,
+  fontSizeVmin,
+} from "../../theme/commonStyles";
 
 import { theme } from "../../theme/theme";
 
@@ -12,4 +19,9 @@ export const StepHistoryWrapper = styled.div`
   border-radius: ${borderRadius}rem;
   padding: ${padding.md}rem;
   caret-color: transparent;
+  font-size: ${fontSizeVmin.sm}vmin;
+
+  ${BREAKPONITS.small} {
+    font-size: ${fontSize.sm}rem;
+  }
 `;

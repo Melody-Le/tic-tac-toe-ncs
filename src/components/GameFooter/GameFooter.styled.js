@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-import { padding, borderRadius, gap } from "../../theme/commonStyles";
+import {
+  padding,
+  borderRadius,
+  gap,
+  BreakPointText,
+  BREAKPONITS,
+  fontSize,
+} from "../../theme/commonStyles";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 import { theme } from "../../theme/theme";
 
@@ -10,7 +18,7 @@ export const FooterWrapper = styled.div`
   gap: ${gap.md}rem;
 `;
 
-export const BackButton = styled.button`
+export const BackButton = styled(BreakPointText)`
   grid-column: span 4;
   display: grid;
   place-content: center;
@@ -18,13 +26,24 @@ export const BackButton = styled.button`
   padding: ${padding.sm}rem;
   border-radius: ${borderRadius}rem;
   transition: background-color 0.2s ease-in-out;
+  &:hover {
+    justify-content: center;
+    font-weight: 700;
+    background-color: ${theme.highlight};
+    color: ${theme.secondDarkBlue};
+  }
 `;
-export const ShowHistoryButton = styled.button`
+
+export const ShowHistoryButton = styled(BreakPointText)`
   grid-column: span 8/-1;
   background-color: ${theme.secondDarkBlue};
-  padding: ${padding.sm}rem;
-  border-radius: ${borderRadius}rem;
   transition: background-color 0.2s ease-in-out;
-  text-align: center;
-  caret-color: transparent;
+  justify-content: center;
+  font-weight: 400;
+  &:hover {
+    justify-content: center;
+    font-weight: 700;
+    background-color: ${theme.highlight};
+    color: ${theme.secondDarkBlue};
+  }
 `;

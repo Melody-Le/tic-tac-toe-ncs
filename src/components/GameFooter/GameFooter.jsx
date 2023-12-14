@@ -49,7 +49,7 @@ function GameFooter() {
       {gameState === GameState.inProgress ? (
         <>
           <BackButton onClick={handleBackAStep} data-testid="backAStepBtn">
-            <RiArrowGoBackLine size={`${fontSize.md}rem`} />
+            <RiArrowGoBackLine />
           </BackButton>
           <ShowHistoryButton
             onClick={handleShowHistory}
