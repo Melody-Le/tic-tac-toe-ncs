@@ -10,29 +10,6 @@ import {
 } from "../../theme/commonStyles";
 import { theme } from "../../theme/theme";
 
-// const BreakPointText = styled.div`
-//   display: flex;
-//   align-items: center;
-//   padding: ${padding.sm}rem 0;
-//   border: 1px solid red;
-//   font-size: ${fontSizeVmin.sm}vmin;
-//   cursor: pointer;
-//   caret-color: transparent;
-
-//   ${BREAKPONITS.small} {
-//     font-size: ${fontSize.sm}rem;
-//     border: 1px solid blue;
-//   }
-
-//   ${BREAKPONITS.tablet} {
-//     font-size: ${fontSize.md}rem;
-//     border: 1px solid green;
-//   }
-//   ${BREAKPONITS.large} {
-//     border: 1px solid white;
-//   }
-// `;
-
 export const GameHeaderContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
