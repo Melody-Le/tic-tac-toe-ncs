@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BREAKPONITS, fontSize } from "../../theme/commonStyles";
+import { BREAKPONITS } from "../../theme/commonStyles";
 
 import { gap } from "../../theme/commonStyles";
 

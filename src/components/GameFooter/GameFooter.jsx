@@ -5,7 +5,6 @@ import {
   FooterWrapper,
 } from "./GameFooter.styled";
 import { RiArrowGoBackLine } from "react-icons/ri";
-import { fontSize } from "../../theme/commonStyles";
 import { GameState } from "../../utils/constant";
 import GameOver from "../GameOver/GameOver";
 import StepHistory from "../StepHistory/StepHistory";

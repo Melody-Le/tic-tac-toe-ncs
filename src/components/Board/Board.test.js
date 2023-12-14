@@ -1,7 +1,5 @@
 import { render, screen } from "../../test-utils/testing-library-utils";
 
-import { GameState, PLAYER_X, PLAYER_O } from "../../utils/constant";
-
 import Board from "./Board";
 
 describe("Board Flow", () => {
