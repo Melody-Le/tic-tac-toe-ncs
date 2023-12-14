@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { theme } from "./theme";
-import { padding } from "./commonStyles";
+import { padding, BREAKPONITS } from "./commonStyles";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -12,13 +12,15 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family:-apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     margin: 0;
-    padding: ${padding.xl}rem; 
+    padding: ${padding.md}rem; 
     display: flex;
     justify-content: center; 
     min-height: 100vh;
     background-color:${theme.darkBlue};
 
-
+    ${BREAKPONITS.tablet} {
+      padding: ${padding.lg}rem; 
+    }
   }
   * {
     margin: 0;

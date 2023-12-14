@@ -5,10 +5,7 @@ import {
   borderRadius,
   gap,
   BreakPointText,
-  BREAKPONITS,
-  fontSize,
 } from "../../theme/commonStyles";
-import { RiArrowGoBackLine } from "react-icons/ri";
 
 import { theme } from "../../theme/theme";
 
