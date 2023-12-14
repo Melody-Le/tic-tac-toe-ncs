@@ -13,12 +13,7 @@ export const GameOverContainer = styled(BreakPointText)`
   justify-content: center;
   font-weight: 700;
   font-size: ${fontSizeVmin.md}vmin;
-  &:hover {
-    justify-content: center;
-    font-weight: 700;
-    background-color: ${theme.highlight};
-    color: ${theme.secondDarkBlue};
-  }
+  pointer-events: none;
 
   ${BREAKPONITS.small} {
     font-size: ${fontSize.md}rem;

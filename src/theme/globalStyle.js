@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     background-color:${theme.darkBlue};
 
     ${BREAKPONITS.tablet} {
-      padding: ${padding.lg}rem; 
+      padding: ${padding.xl}rem; 
     }
   }
   * {
